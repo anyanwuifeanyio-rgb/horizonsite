@@ -394,7 +394,7 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
         : `${selectedOfferForPricing.currency} ${selectedOfferForPricing.price.toLocaleString()}`;
 
       generateItineraryPDF({
-        pnr: reservationResult.pnr,
+        pnr: reservationResult?.pnr || 'Pending',
         bookingReference: reservationResult.booking_reference,
         carrier: reservationResult.carrier,
         airlineName: selectedOfferForPricing.airline_name,
