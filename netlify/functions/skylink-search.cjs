@@ -5,7 +5,7 @@
 // Frontend should call this exactly like it currently calls
 // /api/skylink/search — same method, same body shape.
 
-const { skylinkFetch } = require('./_skylink-auth');
+const { skylinkFetch } = require('./_skylink-auth.cjs');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
