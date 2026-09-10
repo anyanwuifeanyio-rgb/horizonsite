@@ -1,0 +1,7 @@
+{
+  "name": "HORIZON MOVE LIMITED - Global Flights, Education & Travel Consulting",
+  "description": "Premium portal for Horizon Move Limited: Live GDS international flight bookings, European work permits, study abroad admissions, and global visas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

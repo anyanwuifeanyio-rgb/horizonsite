@@ -1,0 +1,28 @@
+# netlify.toml
+#
+# Maps the paths your frontend already calls (/api/skylink/*) to the
+# actual Netlify Functions (/.netlify/functions/*), so you DON'T need to
+# change any fetch() calls in your existing frontend code.
+
+[build]
+  functions = "netlify/functions"
+  # Keep your existing publish directory / build command below if you
+  # already have one configured — do not remove those, just add
+  # `functions` and the [[redirects]] blocks.
+  # publish = "dist"
+  # command = "npm run build"
+
+[[redirects]]
+  from = "/api/skylink/search"
+  to = "/.netlify/functions/skylink-search"
+  status = 200
+
+[[redirects]]
+  from = "/api/skylink/pricing"
+  to = "/.netlify/functions/skylink-pricing"
+  status = 200
+
+[[redirects]]
+  from = "/api/skylink/reserve"
+  to = "/.netlify/functions/skylink-reserve"
+  status = 200

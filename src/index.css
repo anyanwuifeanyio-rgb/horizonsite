@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --navy-deep: #1B365D;
+    --navy-dark: #12243f;
+    --navy-light: #264a7c;
+    --gold-champagne: #CFAE70;
+    --gold-light: #E4C88E;
+    --gold-dark: #A98745;
+    --pearl-white: #F8F9FA;
+    --accent-red: #A61C1C;
+    --accent-red-hover: #8C1616;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F8F9FA;
+    color: #1e293b;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-luxury {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Luxury patterns and effects */
+.bg-navy-pattern {
+  background-color: #1B365D;
+  background-image: radial-gradient(rgba(207, 174, 112, 0.12) 1px, transparent 1px), radial-gradient(rgba(207, 174, 112, 0.08) 1px, #1B365D 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F3E5AB 0%, #CFAE70 45%, #E4C88E 70%, #A98745 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(207, 174, 112, 0.35);
+  box-shadow: 0 0 20px rgba(207, 174, 112, 0.12);
+}
+
+.gold-border-glow-hover:hover {
+  border-color: rgba(207, 174, 112, 0.8);
+  box-shadow: 0 8px 30px rgba(207, 174, 112, 0.22);
+}
+
+.glass-navy {
+  background: rgba(27, 54, 93, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(207, 174, 112, 0.22);
+}
+
+.glass-white {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(207, 174, 112, 0.25);
+}
+
+.gold-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.35) 55%,
+    transparent 80%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  animation: goldShimmer 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes goldShimmer {
+  0% {
+    transform: rotate(25deg) translateY(-120%);
+  }
+  25%, 100% {
+    transform: rotate(25deg) translateY(120%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1c30;
+}
+::-webkit-scrollbar-thumb {
+  background: #395b8c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CFAE70;
+}
