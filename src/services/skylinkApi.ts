@@ -495,7 +495,7 @@ export class SkyLinkClient {
     const currency = (req.currency || 'NGN').toUpperCase();
 
     const searchPayload = {
-      search_mode: 'local',
+      search_mode: 'external',
       from: origin,
       to: destination,
       flight_type: (req.flight_type === 'oneway' || (req.flight_type as string) === 'one-way' || (req.flight_type as string) === 'one_way') ? 'oneway' : (req.flight_type === 'multicity' ? 'multicity' : 'roundtrip'),
