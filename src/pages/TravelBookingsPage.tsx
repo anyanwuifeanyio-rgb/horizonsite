@@ -1721,7 +1721,7 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
       )}
 
       {/* Paystack Payment Modal */}
-      {isPaystackOpen && selectedOfferForPricing &&
+      {isPaystackOpen && selectedOfferForPricing && (
         <PaystackPaymentModal
           isOpen={isPaystackOpen}
           onClose={() => setIsPaystackOpen(false)}
