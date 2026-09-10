@@ -26,3 +26,8 @@
   from = "/api/skylink/reserve"
   to = "/.netlify/functions/skylink-reserve"
   status = 200
+
+  [[redirects]] 
+    from = "/api/paystack/verify/*"
+    to = "/.netlify/functions/paystack-verify/:splat" 
+    status = 200
