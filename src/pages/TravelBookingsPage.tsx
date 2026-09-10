@@ -1726,7 +1726,7 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
           isOpen={isPaystackOpen}
           onClose={() => setIsPaystackOpen(false)}
           bookingDetails={{
-            pnr: reservationResult.pnr,
+            pnr: reservationResult?.pnr || 'Pending',
             airline: selectedOfferForPricing.airline_name,
             flightNo: selectedOfferForPricing.flight_no,
             from: selectedOfferForPricing.departure_code,
