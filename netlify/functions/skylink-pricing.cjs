@@ -7,7 +7,7 @@
 // the subsequent /reserve call. The frontend is responsible for storing
 // and forwarding the freshest token — this function just proxies through.
 
-const { skylinkFetch } = require('./_skylink-auth');
+const { skylinkFetch } = require('./_skylink-auth.cjs');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
