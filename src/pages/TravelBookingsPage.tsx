@@ -290,10 +290,9 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
     setIsReserveModalOpen(true);
   };
 
-  const handleExecuteReserve = async (e: React.FormEvent) => {
-    e.preventDefault();
+   const executeSkyLinkReservation = async () => {
     if (!selectedOfferForPricing) return;
-
+     
     setIsReserving(true);
     setReservationError(null);
 
@@ -380,6 +379,11 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
     } finally {
       setIsReserving(false);
     }
+  };
+  const handleExecuteReserve = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedOfferForPricing) return;
+    setIsPaystackOpen(true);
   };
 
   const handleDownloadCustomerItinerary = () => {
@@ -1717,7 +1721,7 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
       )}
 
       {/* Paystack Payment Modal */}
-      {reservationResult && selectedOfferForPricing && (
+      {isPaystackOpen && selectedOfferForPricing &&
         <PaystackPaymentModal
           isOpen={isPaystackOpen}
           onClose={() => setIsPaystackOpen(false)}
@@ -1734,10 +1738,12 @@ export const TravelBookingsPage: React.FC<TravelBookingsPageProps> = ({
             passengerPhone: `+${guestDetails.country_code} ${guestDetails.phone}`
           }}
           onPaymentSuccess={(data) => {
-            setHasPaidViaPaystack(true);
-            setPaystackReceiptData(data);
-            onSuccessToast(`Payment of ${data.amount} received via Paystack! Official receipt sent to your email.`);
-          }}
+    setHasPaidViaPaystack(true);
+    setPaystackReceiptData(data);
+    setIsPaystackOpen(false);
+    onSuccessToast(`Payment of ${data.amount} received! Generating your booking...`);
+    executeSkyLinkReservation();
+}}
         />
       )}
     </div>
