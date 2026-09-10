@@ -12,7 +12,7 @@
 // recovery of costs. Make sure your checkout logic sits in front of this
 // function, not after it.
 
-const { skylinkFetch } = require('./_skylink-auth');
+const { skylinkFetch } = require('./_skylink-auth.cjs');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
