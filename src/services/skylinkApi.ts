@@ -627,26 +627,35 @@ export class SkyLinkClient {
 
     const totalPax = (req.passengers.adults || 1) + (req.passengers.children || 0) + (req.passengers.infants || 0);
 
-    const reservePayload = {
-      booking_token: req.booking_token,
-      passengers: totalPax,
-      travellers: [
-        {
-          title: primary.title || 'MR',
-          first_name: primary.first_name,
-          last_name: primary.last_name,
-          date_of_birth: primary.dob || '1995-05-15',
-          gender: primary.gender === 'female' ? 'F' : 'M',
-          passenger_type: 'adult',
-          passport_number: primary.passport_number,
-          passport_expiry: primary.passport_expiry || '2030-01-01',
-          nationality: primary.nationality || 'NG',
-          issuing_country: primary.nationality || 'NG',
-          email: primary.email,
-          phone: `+${primary.country_code || '234'}${primary.phone}`
+         const primaryGuestPayload = {
+        title: primary.title || 'Mr',
+        first_name: primary.first_name,
+        last_name: primary.last_name,
+        email: primary.email,
+        phone: primary.phone,
+        country_code: primary.country_code || '234',
+        dob: primary.dob || '1995-05-15',
+        gender: primary.gender === 'female' ? 'female' : 'male',
+        passport_number: primary.passport_number,
+        passport_expiry: primary.passport_expiry || '2030-01-01',
+        passport_issue_date: primary.passport_issue_date || '2020-01-01',
+        nationality: primary.nationality || 'NG'
+      };
+
+      const reservePayload = {
+        booking_token: req.booking_token,
+        passengers: {
+          adults: req.passengers.adults || 1,
+          children: req.passengers.children || 0,
+          infants: req.passengers.infants || 0
+        },
+        travellers: {
+          primary_guest: primaryGuestPayload,
+          travelers: {
+            adult_0: primaryGuestPayload
+          }
         }
-      ]
-    };
+      };
 
     const result = await this.requestGateway<any>('reserve', 'POST', reservePayload, 'reserve');
 
